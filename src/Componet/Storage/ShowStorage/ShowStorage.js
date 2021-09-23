@@ -1,13 +1,16 @@
 import React from 'react';
-import AddID from '../../AddID/AddId';
+import { AddID,removeId } from '../../AddID/AddId';
 
 const ShowStorage = (props) => {
     // console.log(props.data._id);
    let {_id,balance,name,gender,company,email} = props.data
-   console.log(_id);
    const handler=Id=>{
-       AddID(Id)
+       AddID(Id);
    }
+   const removeHandler= id=>{
+       removeId(id);
+   }
+
     return (
         <div>
             <h5>Id : {_id}</h5>
@@ -17,6 +20,7 @@ const ShowStorage = (props) => {
             <h5>email : {email}</h5>
             <h5>company : {company}</h5>
             <button onClick={()=>handler(_id)}>Add Purchase</button>
+            <button onClick={()=>removeHandler(_id)}>Remove Item</button>
         </div>
     );
 };

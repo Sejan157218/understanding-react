@@ -1,6 +1,6 @@
 
 const AddID = id => {
-   const exists = localStorage.getItem('shopping_cart');
+   const exists = grtId();
    let shopping_cart = {}
    if(!exists){
     shopping_cart[id] = 1;
@@ -15,7 +15,22 @@ const AddID = id => {
         shopping_cart[id] = 1;
        }
    }
-   localStorage.setItem('shopping_cart',JSON.stringify(shopping_cart))
+   setItem(shopping_cart);
 };
+const grtId = () => localStorage.getItem('shopping_cart');
+const setItem =(cart) =>localStorage.setItem('shopping_cart',JSON.stringify(cart))
 
-export default AddID;
+
+const removeId = id =>{
+    const exists = grtId();
+    if(!exists){
+
+    }
+    else{
+        const cartJson = JSON.parse(exists)
+        delete cartJson[id];
+        setItem(cartJson);
+
+    }
+}
+export  {AddID,removeId};
